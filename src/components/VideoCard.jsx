@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid, makeStyles, IconButton } from "@material-ui/core";
 import { MoreVert } from "@material-ui/icons";
 import { Link } from "react-router-dom";
@@ -126,7 +126,7 @@ function VideoCard({ videoName }) {
       </Link>
 
       <div className={classes.videoDetails}>
-        <Link to="/channel">
+        <Link to="/channel/5fabce4507cf9b4ea489b9c0">
           <img
             src="/images/c.jpg"
             className={classes.channelThumbnail}
@@ -137,7 +137,10 @@ function VideoCard({ videoName }) {
           <Link to="/watch" className={classes.videoName} title={videoName}>
             {videoName}
           </Link>
-          <Link to="/channel" className={`${classes.channelName}`}>
+          <Link
+            to="/channel/5fabce4507cf9b4ea489b9c0"
+            className={`${classes.channelName}`}
+          >
             <div className={classes.secondaryDetails}>Channel Name Here</div>
             {/* <div className={classes.channelInfo}>
               <ChannelCard small />

@@ -1,9 +1,12 @@
 import { Button, IconButton, makeStyles } from "@material-ui/core";
 import { NotificationsOutlined } from "@material-ui/icons";
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function ChannelCard(props) {
+  const user = useSelector((state) => state.auth.currentUser);
+  const channel = useSelector((state) => state.channel.currentChannel);
   const useStyles = makeStyles((theme) => ({
     parent: {
       float: "left",
@@ -26,6 +29,7 @@ function ChannelCard(props) {
     subscribers: {
       fontSize: props.bigView ? "1.9rem" : "1.5rem",
       color: "#555",
+      display: "block",
     },
     button: {
       fontSize: "1.6rem",
@@ -44,23 +48,55 @@ function ChannelCard(props) {
           <img className={classes.cover} src="/images/c.jpg" alt="" />
         </Link>
         <Link className={classes.chName} to="/channel">
-          Channel Name Here
+          {channel && channel.name}
         </Link>
-        <div className={classes.subscribers}>12.6M subscribers</div>
+        <div className={classes.subscribers}>
+          {channel && channel.subscriber} subscribers
+        </div>
       </div>
 
-      <div style={{ float: "right" }}>
-        <Button
-          variant="contained"
-          className={classes.button}
-          color="secondary"
-        >
-          SUBSCRIBE
-        </Button>
-        <IconButton style={{ marginLeft: "1rem" }}>
-          <NotificationsOutlined className={classes.notifIcon} />
-        </IconButton>
-      </div>
+      {user && channel && channel.userId !== user._id && (
+        <div style={{ float: "right" }}>
+          <Button
+            variant="contained"
+            className={classes.button}
+            color="secondary"
+          >
+            SUBSCRIBE
+          </Button>
+          <IconButton style={{ marginLeft: "1rem" }}>
+            <NotificationsOutlined className={classes.notifIcon} />
+          </IconButton>
+        </div>
+      )}
+
+      {user && channel && channel.userId === user._id && (
+        <div style={{ float: "right" }}>
+          <Link to="/studio">
+            <Button
+              variant="contained"
+              className={classes.button}
+              color="primary"
+            >
+              customize channel
+            </Button>
+          </Link>
+        </div>
+      )}
+
+      {channel && !user && (
+        <div style={{ float: "right" }}>
+          <Link to="/account/login">
+            <Button
+              variant="outlined"
+              className={classes.button}
+              color="secondary"
+            >
+              login to subscribe
+            </Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

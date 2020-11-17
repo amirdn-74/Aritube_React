@@ -45,7 +45,7 @@ function ChannelTabs(props) {
     <div className={classes.tabsWrapper}>
       <Tabs variant="scrollable">
         {tabs.map((tab) => (
-          <Link to={`/channel${tab.url}`}>
+          <Link to={`/channel/${props.channelId}${tab.url}`}>
             <Tab label={tab.label} className={classes.tab} />
           </Link>
         ))}

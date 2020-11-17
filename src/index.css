@@ -19,3 +19,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+input,
+label,
+button.custom {
+  font-size: 1.5rem !important;
+  /* color: #0d6edd; */
+}
+
+button.custom.block {
+  padding: 1rem;
+}
+
+legend {
+  font-size: 1.1rem !important;
+}
+
+.makeStyles-navLink-25.active {
+  color: #ef5350 !important;
+  border-color: #ef5350 !important;
+}
+
+.makeStyles-navLink-25.active svg {
+  color: #ef5350 !important;
+}
