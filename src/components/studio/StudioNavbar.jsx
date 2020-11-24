@@ -9,6 +9,7 @@ import {
   Settings,
 } from "@material-ui/icons";
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,30 +48,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function StudioNavbar(props) {
+  const channel = useSelector((state) => state.channel.currentChannel);
   const classes = useStyles();
 
   return (
     <ul className={classes.studioNav}>
       <li className={classes.navOption}>
-        <NavLink className={`${classes.navLink}`} to="/studio/dashboard">
+        <NavLink className={`${classes.navLink}`} to={`/studio/dashboard`}>
           <Dashboard className={classes.icon} />
           Dashboard
         </NavLink>
       </li>
       <li className={classes.navOption}>
-        <NavLink className={classes.navLink} to="/studio/customization">
+        <NavLink className={classes.navLink} to={`/studio/customization`}>
           <Edit className={classes.icon} />
           Customization
         </NavLink>
       </li>
       <li className={classes.navOption}>
-        <NavLink className={classes.navLink} to="/studio/videos">
+        <NavLink className={classes.navLink} to={`/studio/videos`}>
           <Movie className={classes.icon} />
           Videos
         </NavLink>
       </li>
       <li className={classes.navOption}>
-        <NavLink className={classes.navLink} to="/studio/playlists">
+        <NavLink className={classes.navLink} to={`/studio/playlists`}>
           <PlaylistPlay
             className={classes.icon}
             style={{ fontSize: "2.5rem", marginTop: "0" }}
@@ -79,13 +81,13 @@ function StudioNavbar(props) {
         </NavLink>
       </li>
       <li className={classes.navOption}>
-        <NavLink className={classes.navLink} to="/studio/comments">
+        <NavLink className={classes.navLink} to={`/studio/comments`}>
           <Comment className={classes.icon} />
           Comments
         </NavLink>
       </li>
       <li className={classes.navOption}>
-        <NavLink className={classes.navLink} to="/studio/settings">
+        <NavLink className={classes.navLink} to={`/studio/settings`}>
           <Settings className={classes.icon} />
           Settings
         </NavLink>

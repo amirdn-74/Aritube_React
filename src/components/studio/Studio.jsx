@@ -1,5 +1,5 @@
 import { Grid, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import { Redirect, Switch } from "react-router-dom";
 import StudioNavbar from "./StudioNavbar";
 import ChannelOwnerRoute from "../protectedRoutes/ChannelOwnerRoute";
@@ -9,6 +9,7 @@ import VideosPage from "./VideosPage";
 import PlaylistsPage from "./PlaylistsPage";
 import CommentsPage from "./CommentsPage";
 import SettingsPage from "./SettingsPage";
+import studioService from "../../services/studioService";
 
 const useStyles = makeStyles((theme) => ({
   grid: {
@@ -21,8 +22,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Studio() {
+function Studio(props) {
   const classes = useStyles();
+
+  const fetchChannel = async () => {
+    await studioService.getMyChannel();
+  };
+
+  useEffect(() => {
+    fetchChannel();
+  }, []);
 
   return (
     <Grid className={classes.grid} item xs={12}>

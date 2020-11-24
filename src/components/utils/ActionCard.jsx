@@ -43,6 +43,14 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     fontSize: "2rem",
   },
+  oneLine: {
+    textOverflow: "ellipsis",
+    whiteSpace: "normal",
+    display: "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 1,
+    overflow: "hidden",
+  },
 }));
 
 let classes;
@@ -74,8 +82,12 @@ export function PanelTitle({ title, actionButton, Icon, onAction }) {
   );
 }
 
-export function PanelBody({ children }) {
-  return <div className={classes.panelBody}>{children}</div>;
+export function PanelBody({ children, oneLine }) {
+  return (
+    <div className={`${classes.panelBody} ${oneLine && classes.oneLine}`}>
+      {children}
+    </div>
+  );
 }
 
 export default ActionCard;

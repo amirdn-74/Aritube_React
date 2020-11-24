@@ -22,9 +22,14 @@ code {
 
 input,
 label,
+textarea,
 button.custom {
   font-size: 1.5rem !important;
   /* color: #0d6edd; */
+}
+
+textarea {
+  line-height: 2.2rem !important;
 }
 
 button.custom.block {

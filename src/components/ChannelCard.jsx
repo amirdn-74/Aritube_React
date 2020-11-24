@@ -45,7 +45,13 @@ function ChannelCard(props) {
     <div className={classes.parent}>
       <div style={{ float: "left" }}>
         <Link to="/channel">
-          <img className={classes.cover} src="/images/c.jpg" alt="" />
+          {channel.profile && (
+            <img
+              className={classes.cover}
+              src={`http://localhost:4000/asset/channel/${channel.profile}`}
+              alt=""
+            />
+          )}
         </Link>
         <Link className={classes.chName} to="/channel">
           {channel && channel.name}

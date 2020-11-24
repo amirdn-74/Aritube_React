@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 function ChannelPage(props) {
   const classes = useStyles();
   const history = useHistory();
-  const user = useSelector((state) => state.auth.currentUser);
   const channel = useSelector((state) => state.channel.currentChannel);
   const [validChannel, setValidChannel] = useState(false);
 
@@ -49,7 +48,11 @@ function ChannelPage(props) {
       {validChannel && (
         <Fragment>
           <div className={classes.headWrapper}>
-            {channel && channel.banner && <Parallax />}
+            {channel && channel.banner && (
+              <Parallax
+                image={`http://localhost:4000/asset/channel/${channel.banner}`}
+              />
+            )}
           </div>
           <Grid className={classes.grid} sx={12}>
             <ChannelCard bigView={true} />

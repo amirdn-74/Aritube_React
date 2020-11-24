@@ -14,11 +14,7 @@ function FormError({ error, visible }) {
 
   if (!error || !visible) return null;
 
-  return (
-    <div>
-      <div className={classes.error}>{error}</div>
-    </div>
-  );
+  return <div className={classes.error}>{error}</div>;
 }
 
 export default FormError;

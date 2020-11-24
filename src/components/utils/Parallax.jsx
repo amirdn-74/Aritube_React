@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Parallax(props) {
+function Parallax({ image }) {
   const classes = useStyles();
   const [imageTop, setImageTop] = useState(0);
 
@@ -37,7 +37,7 @@ function Parallax(props) {
         <img
           className={classes.image}
           style={{ top: `-${imageTop}px` }}
-          src="images/banner.png"
+          src={image}
           alt=""
         />
       </div>
